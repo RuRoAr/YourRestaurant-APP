@@ -3,6 +3,7 @@ package com.myApp.yourRestaurant.domain;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
@@ -17,9 +18,13 @@ public class User implements Serializable {
     private String fullName;
     @ColumnInfo
     private String userName;
-
+    @ColumnInfo
+    private String email;
+    @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
+    private byte[] userPhoto;
     @Override
     public String toString() {
+
         return "User{" +
                 "fullName='" + fullName + '\'' +
                 ", userName='" + userName + '\'' +
@@ -39,6 +44,10 @@ public class User implements Serializable {
         this.password = password;
         this.email = email;
         this.userPhoto = userPhoto;
+    }
+    @Ignore
+    public User(){
+
     }
 
     public long getId() {
@@ -89,9 +98,6 @@ public class User implements Serializable {
         this.userPhoto = userPhoto;
     }
 
-    @ColumnInfo
-    private String email;
-    @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
-    private byte[] userPhoto;
+
 
 }

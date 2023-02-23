@@ -20,6 +20,9 @@ import com.myApp.yourRestaurant.api.Constants;
 import com.myApp.yourRestaurant.contract.RegisterUserContract;
 import com.myApp.yourRestaurant.domain.User;
 import com.myApp.yourRestaurant.presenter.RegisterUserPresenter;
+import com.myApp.yourRestaurant.util.ImageUtils;
+
+import retrofit2.http.PUT;
 
 
 public class RegisterUserView extends AppCompatActivity implements RegisterUserContract.View {
@@ -71,6 +74,16 @@ public class RegisterUserView extends AppCompatActivity implements RegisterUserC
         }
 
 
+    }
+    public void addUser(View view){
+        user.setFullName(fullName.getText().toString().trim());
+        user.setUserName(userName.getText().toString().trim());
+        user.setEmail(email.getText().toString().trim());
+        user.setPassword1(password1.getText().toString().trim());
+        user.setPassword2(password2.getText().toString().trim());
+        user.setUserPhoto(ImageUtils.fromImageViewToByteArray(userPhoto));
+
+        presenter.addUser(user);
     }
 
     public void takePhoto(View view) {

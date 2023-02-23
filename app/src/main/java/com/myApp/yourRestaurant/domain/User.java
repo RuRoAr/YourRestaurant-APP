@@ -19,35 +19,35 @@ public class User implements Serializable {
     @ColumnInfo
     private String userName;
     @ColumnInfo
+    private String password1;
+    @ColumnInfo
+    private String Password2;
+    @ColumnInfo
     private String email;
-    @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
-    private byte[] userPhoto;
+
     @Override
     public String toString() {
-
         return "User{" +
                 "fullName='" + fullName + '\'' +
                 ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
+                ", password1='" + password1 + '\'' +
+                ", getPassword2='" + Password2 + '\'' +
                 ", email='" + email + '\'' +
                 ", userPhoto=" + Arrays.toString(userPhoto) +
                 '}';
     }
 
-    @ColumnInfo
-    private String password;
+    @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
+    private byte[] userPhoto;
 
-    public User(long id, String fullName, String userName, String password, String email, byte[] userPhoto) {
+    public User(long id, String fullName, String userName, String password1, String Password2, String email, byte[] userPhoto) {
         this.id = id;
         this.fullName = fullName;
         this.userName = userName;
-        this.password = password;
+        this.password1 = password1;
+        this.Password2 = Password2;
         this.email = email;
         this.userPhoto = userPhoto;
-    }
-    @Ignore
-    public User(){
-
     }
 
     public long getId() {
@@ -74,12 +74,20 @@ public class User implements Serializable {
         this.userName = userName;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPassword1() {
+        return password1;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassword1(String password1) {
+        this.password1 = password1;
+    }
+
+    public String getPassword2() {
+        return Password2;
+    }
+
+    public void setPassword2(String getPassword2) {
+        this.Password2 = getPassword2;
     }
 
     public String getEmail() {
@@ -98,6 +106,9 @@ public class User implements Serializable {
         this.userPhoto = userPhoto;
     }
 
+    @Ignore
+    public User(){
+    }
 
 
 }

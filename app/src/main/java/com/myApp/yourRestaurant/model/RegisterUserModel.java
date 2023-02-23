@@ -16,7 +16,7 @@ public class RegisterUserModel implements RegisterUserContract.Model {
     }
 
     @Override
-    public void addRegisterUser(OnAddUserListener listener, User user) {
+    public void addRegisterUser( OnAddUserListener listener,User user) {
         YourRestaurantApiInterface api = YourRestaurantApi.buildInstance();
         Call<User> callUsers = api.addUser(user);
         callUsers.enqueue(new Callback<User>() {

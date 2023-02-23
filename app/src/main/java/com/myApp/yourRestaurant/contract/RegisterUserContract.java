@@ -27,6 +27,6 @@ public interface RegisterUserContract {
     }
 
     interface Presenter {
-        void addUser(User user, Notification.Action action);
+        void addUser(User user);
     }
 }

@@ -16,9 +16,12 @@
 
         android:usesCleartextTraffic="true">
 
-
+        <activity android:name=".view.CommentListView"
+            android:exported="false"/>
+        <activity android:name=".view.RegisterUserView"
+            android:exported="false"/>
         <activity
-            android:name=".view.RegisterUserView"
+            android:name=".view.UserLoginView"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

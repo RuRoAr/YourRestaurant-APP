@@ -19,9 +19,7 @@ public class User implements Serializable {
     @ColumnInfo
     private String userName;
     @ColumnInfo
-    private String password1;
-    @ColumnInfo
-    private String Password2;
+    private String password;
     @ColumnInfo
     private String email;
 
@@ -30,8 +28,7 @@ public class User implements Serializable {
         return "User{" +
                 "fullName='" + fullName + '\'' +
                 ", userName='" + userName + '\'' +
-                ", password1='" + password1 + '\'' +
-                ", getPassword2='" + Password2 + '\'' +
+                ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", userPhoto=" + Arrays.toString(userPhoto) +
                 '}';
@@ -44,8 +41,7 @@ public class User implements Serializable {
         this.id = id;
         this.fullName = fullName;
         this.userName = userName;
-        this.password1 = password1;
-        this.Password2 = Password2;
+        this.password = password;
         this.email = email;
         this.userPhoto = userPhoto;
     }
@@ -74,20 +70,12 @@ public class User implements Serializable {
         this.userName = userName;
     }
 
-    public String getPassword1() {
-        return password1;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPassword1(String password1) {
-        this.password1 = password1;
-    }
-
-    public String getPassword2() {
-        return Password2;
-    }
-
-    public void setPassword2(String getPassword2) {
-        this.Password2 = getPassword2;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getEmail() {

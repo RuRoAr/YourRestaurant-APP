@@ -45,25 +45,7 @@ public class RegisterUserPresenter implements RegisterUserContract.Presenter, Re
 
     @Override
     public void addUser(User user) {
-//        user.setId(user.getId());
-//        user.setFullName(user.getFullName());
-//        user.setUserName(user.getUserName());
-//        user.setPassword1(user.getPassword1());
-//        user.setPassword2(user.getPassword2());
-//        user.setEmail(user.getEmail());
-//        user.setUserPhoto(user.getUserPhoto());
-//
-//        model.addRegisterUser(this, user);
-
-        if ((user.getUserName().equals("")) || (user.getFullName().equals("")) ||
-                (user.getEmail().equals("")) || (user.getPassword1().equals("")) ||
-                (user.getPassword2().equals(""))) {
-            Toast.makeText(context, "Completa todos los campos", Toast.LENGTH_SHORT).show();
-        } if (user.getPassword1() != (user.getPassword2())) {
-        Toast.makeText(context, "las contraseñas no son iguales", Toast.LENGTH_SHORT).show();
-    }else {
             model.addRegisterUser(this, user);
         }
-       // view.cleanForm();
-    }
+
 }

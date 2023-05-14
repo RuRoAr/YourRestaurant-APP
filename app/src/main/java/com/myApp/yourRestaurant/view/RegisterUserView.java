@@ -1,6 +1,7 @@
 package com.myApp.yourRestaurant.view;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -39,6 +41,7 @@ public class RegisterUserView extends AppCompatActivity implements RegisterUserC
     private Button btnRegister;
 
     private RegisterUserPresenter presenter;
+    private Context context;
 
 
 
@@ -79,11 +82,20 @@ public class RegisterUserView extends AppCompatActivity implements RegisterUserC
         user.setFullName(fullName.getText().toString().trim());
         user.setUserName(userName.getText().toString().trim());
         user.setEmail(email.getText().toString().trim());
-        user.setPassword1(password1.getText().toString().trim());
-        user.setPassword2(password2.getText().toString().trim());
+        user.setPassword(password1.getText().toString().trim());
+   //     user.setPassword2(password2.getText().toString().trim());
         user.setUserPhoto(ImageUtils.fromImageViewToByteArray(userPhoto));
 
-        presenter.addUser(user);
+        if ((user.getUserName().equals("")) || (user.getFullName().equals("")) ||
+                (user.getEmail().equals("")) || password1.equals("") ||
+                (password2.equals(""))) {
+            Toast.makeText(this, "Completa todos los campos", Toast.LENGTH_SHORT).show();
+       // } else if(password1 != password2) {
+    //        Toast.makeText(this, "las contraseñas no son iguales", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            presenter.addUser(user);
+        }
     }
 
     public void takePhoto(View view) {

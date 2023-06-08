@@ -29,8 +29,7 @@ public class User implements Serializable {
                 "fullName='" + fullName + '\'' +
                 ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", userPhoto=" + Arrays.toString(userPhoto) +
+                ", email='" + email +
                 '}';
     }
 

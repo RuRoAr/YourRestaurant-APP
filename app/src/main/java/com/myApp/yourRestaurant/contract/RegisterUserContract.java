@@ -22,7 +22,7 @@ public interface RegisterUserContract {
     }
 
     interface View {
-        void modifyUser(android.view.View view);
+        void modifyUser(android.view.View view); 
         void showErrorMessage(String message);
     }
 

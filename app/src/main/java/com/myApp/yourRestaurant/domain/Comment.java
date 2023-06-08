@@ -19,12 +19,9 @@ public class Comment {
 
     @Override
     public String toString() {
-        return "Comment{" +
-                "title='" + title + '\'' +
-                ", text='" + text + '\'' +
-                ", dateComment='" + dateComment + '\'' +
-                ", commentPhoto=" + Arrays.toString(commentPhoto) +
-                '}';
+        return  "\033[0;1m" + title  + '\n' +
+                 text + '\n' +
+                 dateComment ;
     }
 
     public Comment(long id, String title, String text, String dateComment, byte[] commentPhoto) {

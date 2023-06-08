@@ -7,7 +7,7 @@ import com.myApp.yourRestaurant.view.CommentListView;
 
 import java.util.List;
 
-public class CommentListPresenter implements CommentListContract.presenter, CommentListContract.Model.OnLoadCommentsListener {
+public class CommentListPresenter implements CommentListContract.presenter, CommentListContract.Model.OnLoadCommentsListener, CommentListContract.Model.OnDeleteCommentListener {
     private CommentListModel model;
     private CommentListView view;
 
@@ -30,5 +30,21 @@ public class CommentListPresenter implements CommentListContract.presenter, Comm
     @Override
     public void loadAllComments() {
         model.loadAllComments(this);
+    }
+
+
+    @Override
+    public void deleteComment(String commentId) {
+        model.deleteComment( this, commentId);
+    }
+    @Override
+    public void onDeleteCommentSuccess() {
+        view.showErrorMessage("Borrado");
+    }
+
+    @Override
+    public void onDeleteCommentError(String message) {
+
+        view.showErrorMessage("Algo ha fallado");
     }
 }

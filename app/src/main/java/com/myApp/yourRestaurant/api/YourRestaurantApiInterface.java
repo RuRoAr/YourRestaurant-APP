@@ -7,8 +7,10 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface YourRestaurantApiInterface {
     @GET("comments")
@@ -17,4 +19,6 @@ public interface YourRestaurantApiInterface {
     @POST("user")
     Call<User> addUser(@Body User user);
 
+    @DELETE("comment/{commentId}")
+    Call<Void> deleteComment(@Path("commentId") String commentId);
 }

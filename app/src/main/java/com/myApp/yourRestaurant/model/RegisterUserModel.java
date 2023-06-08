@@ -31,4 +31,5 @@ public class RegisterUserModel implements RegisterUserContract.Model {
             }
         });
     }
+
 }

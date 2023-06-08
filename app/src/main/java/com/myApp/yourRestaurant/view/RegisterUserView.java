@@ -30,23 +30,15 @@ import retrofit2.http.PUT;
 public class RegisterUserView extends AppCompatActivity implements RegisterUserContract.View {
     private User user;
     //private Constants.Action action;
-
     private EditText fullName;
     private EditText userName;
     private EditText email;
     private EditText password1;
     private EditText password2;
     private ImageView userPhoto;
-
     private Button btnRegister;
-
     private RegisterUserPresenter presenter;
     private Context context;
-
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,19 +108,12 @@ public class RegisterUserView extends AppCompatActivity implements RegisterUserC
             userPhoto.setImageBitmap(imageBitmap);
         }
     }
-
-
     @Override
     public void modifyUser(View view) {
-
     }
-
     @Override
     public void showErrorMessage(String message) {
-
     }
-
     private void initializeViews(){
-
     }
 }

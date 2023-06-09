@@ -1,5 +1,11 @@
 package com.myApp.yourRestaurant.domain;
 
+import android.os.Build;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -7,7 +13,7 @@ import androidx.room.PrimaryKey;
 import java.util.Arrays;
 
 @Entity
-public class Comment {
+public class Comment implements Parcelable {
     @PrimaryKey(autoGenerate = true)
     private long id;
     @ColumnInfo
@@ -16,6 +22,27 @@ public class Comment {
     private String text;
     @ColumnInfo
     private String dateComment;
+
+
+    protected Comment(Parcel in) {
+        id = in.readLong();
+        title = in.readString();
+        text = in.readString();
+        dateComment = in.readString();
+        commentPhoto = in.readBlob();
+    }
+
+    public static final Creator<Comment> CREATOR = new Creator<Comment>() {
+        @Override
+        public Comment createFromParcel(Parcel in) {
+            return new Comment(in);
+        }
+
+        @Override
+        public Comment[] newArray(int size) {
+            return new Comment[size];
+        }
+    };
 
     @Override
     public String toString() {
@@ -73,5 +100,20 @@ public class Comment {
 
     public void setCommentPhoto(byte[] commentPhoto) {
         this.commentPhoto = commentPhoto;
+    }
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel parcel, int i) {
+        parcel.writeLong(id);
+        parcel.writeString(title);
+        parcel.writeString(text);
+        parcel.writeString(dateComment);
+        parcel.writeBlob(commentPhoto);
     }
 }

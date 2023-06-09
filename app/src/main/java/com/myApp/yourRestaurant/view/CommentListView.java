@@ -1,6 +1,7 @@
 package com.myApp.yourRestaurant.view;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.MenuItem;
@@ -19,6 +20,7 @@ import com.myApp.yourRestaurant.contract.CommentListContract;
 import com.myApp.yourRestaurant.domain.Comment;
 import com.myApp.yourRestaurant.presenter.CommentListPresenter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,16 +79,18 @@ public class CommentListView extends AppCompatActivity implements CommentListCon
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         AdapterView.AdapterContextMenuInfo info =
                 (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        final int position = info.position;
+        int position = info.position;
         switch (item.getItemId()) {
             case R.id.modify_comment:
-//                Intent intent = new Intent(this, NewRestaurantView.class);
+
+            case R.id.detail_comment:
+                //                Intent intent = new Intent(this, NewRestaurantView.class);
 //                intent.putExtra("restaurant", restaurantList.get(position));
 //                intent.putExtra("ACTION" , "PUT");
 //                startActivity(intent);
-                return true;
-            case R.id.detail_comment:
-//                Intent intent1 = new Intent(this, NewRestaurantView.class);
+                Intent intent1 = new Intent(this, DetailCommentView.class);
+                intent1.putExtra("comment", commentList.get(position));
+                startActivity(intent1);
                 return true;
             case R.id.delete_comment:
                 Comment comment = commentList.get(position);

@@ -6,11 +6,15 @@ import android.os.Bundle;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.myApp.yourRestaurant.R;
 import com.myApp.yourRestaurant.api.Constants;
 import com.myApp.yourRestaurant.domain.Comment;
 import com.myApp.yourRestaurant.util.ImageUtils;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class DetailCommentView extends AppCompatActivity {
     private Constants.Action action;
@@ -24,16 +28,17 @@ public class DetailCommentView extends AppCompatActivity {
         }
 
     private void fillCommentDetails() {
-        EditText etTitle = findViewById(R.id.title_comment);
-        EditText etComment = findViewById(R.id.comment);
-        EditText etDateComment = findViewById(R.id.comment_date);
-//        CheckBox checkFavourite = findViewById(R.id.checkBox);
+        TextView etTitle = findViewById(R.id.title_comment);
+        TextView etComment = findViewById(R.id.comment);
+        TextView etDateComment = findViewById(R.id.comment_date);
+//      CheckBox checkFavourite = findViewById(R.id.checkBox);
         ImageView etImageComment = findViewById(R.id.imageView);
+
 
         etTitle.setText(comment.getTitle());
         etComment.setText(comment.getText());
-        etDateComment.setText(String.valueOf(comment.getDateComment()));
-//        checkFavourite.setChecked(comment.isFavourite());
+        etDateComment.setText(comment.getDateComment());
+//      checkFavourite.setChecked(comment.isFavourite());
         etImageComment.setImageBitmap(ImageUtils.getBitmap(comment.getCommentPhoto()));
     }
 }

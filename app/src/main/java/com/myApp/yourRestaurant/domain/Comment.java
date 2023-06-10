@@ -46,9 +46,9 @@ public class Comment implements Parcelable {
 
     @Override
     public String toString() {
-        return  "\033[0;1m" + title  + '\n' +
-                 text + '\n' +
-                 dateComment ;
+        return  "- " + title  + '\n' + '\n'  + '\n' +
+                "- "+ text + '\n' +
+                "- " + dateComment ;
     }
 
     public Comment(long id, String title, String text, String dateComment, byte[] commentPhoto) {

@@ -4,6 +4,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.myApp.yourRestaurant.R;
 import com.myApp.yourRestaurant.contract.CommentListContract;
@@ -30,7 +33,7 @@ public class CommentListView extends AppCompatActivity implements CommentListCon
    private ArrayAdapter<Comment> commentsArrayAdapter;
    private List<Comment> commentList;
    private String commentId;
-    private final String DEFAULT_STRING = "";
+   private final String DEFAULT_STRING = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +42,12 @@ public class CommentListView extends AppCompatActivity implements CommentListCon
         initializeCommentList();
         presenter = new CommentListPresenter(this);
         presenter.loadAllComments();
-
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.actionbar_main,menu);
+        return super.onCreateOptionsMenu(menu);
     }
     private void initializeCommentList() {
         commentList = new ArrayList<>();
@@ -48,6 +56,14 @@ public class CommentListView extends AppCompatActivity implements CommentListCon
         lvComments.setAdapter(commentsArrayAdapter);
         lvComments.setOnItemClickListener(this);
         registerForContextMenu(lvComments);
+        lvComments.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapter, View view, int position, long arg) {
+                Intent intent = new Intent(CommentListView.this, DetailCommentView.class);
+                intent.putExtra("comment", commentList.get(position));
+                startActivity(intent);
+            }
+        });
 
     }  @Override
     protected void onResume() {
@@ -70,7 +86,8 @@ public class CommentListView extends AppCompatActivity implements CommentListCon
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
     }
-    @Override
+
+
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         getMenuInflater().inflate(R.menu.actionbar_edit, menu);
@@ -125,4 +142,28 @@ public class CommentListView extends AppCompatActivity implements CommentListCon
                 });
         builder.create().show();
     }
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.add_restaurant) {
+//            Intent intent = new Intent(this, NewRestaurantView.class);
+//            intent.putExtra("ACTION", "POST");
+//            startActivity(intent);
+            return true;
+        }else if (item.getItemId() == R.id.add_comment) {
+//            Intent intent = new Intent(this, MapsActivity.class);
+//            startActivity(intent);
+        }else if (item.getItemId() == R.id.more_users) {
+//            Intent intent = new Intent(this, OrderListView.class);
+//            startActivity(intent);
+        }else if (item.getItemId() == R.id.more_restaurants     ) {
+            Intent intent = new Intent(this, RestaurantListView.class);
+            startActivity(intent);
+        }
+
+        return false;
+    }
+
+
 }

@@ -1,6 +1,7 @@
 package com.myApp.yourRestaurant.api;
 
 import com.myApp.yourRestaurant.domain.Comment;
+import com.myApp.yourRestaurant.domain.Restaurant;
 import com.myApp.yourRestaurant.domain.User;
 
 import java.util.List;
@@ -15,6 +16,9 @@ import retrofit2.http.Path;
 public interface YourRestaurantApiInterface {
     @GET("comments")
     Call<List<Comment>> getComments();
+
+    @GET("restaurants")
+    Call<List<Restaurant>> getRestaurants();
 
     @POST("user")
     Call<User> addUser(@Body User user);

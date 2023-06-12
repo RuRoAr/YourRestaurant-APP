@@ -35,6 +35,8 @@ public class RegisterUserView extends AppCompatActivity implements RegisterUserC
     private EditText email;
     private EditText password1;
     private EditText password2;
+    private String passwordOne;
+    private String passwordTwo;
     private ImageView userPhoto;
     private Button btnRegister;
     private RegisterUserPresenter presenter;
@@ -76,14 +78,16 @@ public class RegisterUserView extends AppCompatActivity implements RegisterUserC
         user.setEmail(email.getText().toString().trim());
         user.setPassword(password1.getText().toString().trim());
    //     user.setPassword2(password2.getText().toString().trim());
+        passwordOne = password1.getText().toString().trim();
+        passwordTwo = password2.getText().toString().trim();
         user.setUserPhoto(ImageUtils.fromImageViewToByteArray(userPhoto));
 
         if ((user.getUserName().equals("")) || (user.getFullName().equals("")) ||
                 (user.getEmail().equals("")) || password1.equals("") ||
                 (password2.equals(""))) {
             Toast.makeText(this, "Completa todos los campos", Toast.LENGTH_SHORT).show();
-       // } else if(password1 != password2) {
-    //        Toast.makeText(this, "las contraseñas no son iguales", Toast.LENGTH_SHORT).show();
+        } else if (!passwordOne.equals( passwordTwo)) {
+            Toast.makeText(this, "las contraseñas no son iguales", Toast.LENGTH_SHORT).show();
         }
         else {
             presenter.addUser(user);
@@ -96,7 +100,6 @@ public class RegisterUserView extends AppCompatActivity implements RegisterUserC
             startActivityForResult(takePictureIntent, 1);
         }
     }
-    // Muestra la vista previa en un imageWiev de la foto tomada
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
 

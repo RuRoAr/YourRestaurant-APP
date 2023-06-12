@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,7 +21,9 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.myApp.yourRestaurant.R;
 import com.myApp.yourRestaurant.contract.UserLoginContract;
+import com.myApp.yourRestaurant.domain.User;
 import com.myApp.yourRestaurant.presenter.CommentListPresenter;
+import com.myApp.yourRestaurant.presenter.UserLoginPresenter;
 import com.myApp.yourRestaurant.util.StringHelper;
 
 import java.util.HashMap;
@@ -31,6 +34,11 @@ public class UserLoginView extends AppCompatActivity implements UserLoginContrac
     private TextView inputEmail;
     private TextView inputPassword;
     private Button buttonLogin;
+    private User user;
+    private String email = "a";
+    private String password = "a";
+
+    private UserLoginPresenter presenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,57 +55,28 @@ public class UserLoginView extends AppCompatActivity implements UserLoginContrac
             }
         });
 
+
         buttonLogin.setOnClickListener(new View.OnClickListener() {
+       ;
             @Override
             public void onClick(View view) {
-                processFormField();
-           //     authenticateUser();
+
+//                user.setEmail(inputEmail.getText().toString().trim());
+//                user.setPassword(inputPassword.getText().toString().trim());
+
+//                presenter.ValidateEmailAndPassword("a", "a");
+
+            if(validateEmail()) {
                 Intent intent = new Intent(UserLoginView.this, CommentListView.class);
                 startActivity(intent);
             }
+            }
         });
     }
-    public void authenticateUser(){
-        if(!validateEmail() || !validatePasswordAndConfirm()){
-            return;
-        }
-    }
-    @Override
+
     public void showErrorMessage(String message) {
     }
-    public void  processFormField(){
-        if(!validateEmail() || !validatePasswordAndConfirm()){
-            return;
-        }
-        RequestQueue queue = Volley.newRequestQueue(UserLoginView.this);
-        String url = "http://localhost:8080/login";
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                if (response.equalsIgnoreCase("success")){
-                    inputEmail.setText(null);
-                    inputPassword.setText(null);
 
-                }
-                Toast.makeText(UserLoginView.this, "Registration Successful", Toast.LENGTH_SHORT).show();
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(UserLoginView.this, "Registration Un-Successful", Toast.LENGTH_SHORT).show();
-            }
-        }){
-            @Nullable
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-               Map<String, String> params = new HashMap<>();
-               params.put("email", inputEmail.getText().toString());
-               params.put("password", inputPassword.getText().toString());
-               return  params;
-            }
-        };
-        queue.add(stringRequest);
-    }
 
     public boolean validateEmail() {
         String email = inputEmail.getText().toString();
@@ -112,9 +91,9 @@ public class UserLoginView extends AppCompatActivity implements UserLoginContrac
         return true;
     }
 }
-    //TODO
+
     public boolean validatePasswordAndConfirm(){
-    //    String email = inputEmail.getText().toString();
+        String email = inputEmail.getText().toString();
         String password = inputPassword.getText().toString();
 
         if(password.isEmpty()){

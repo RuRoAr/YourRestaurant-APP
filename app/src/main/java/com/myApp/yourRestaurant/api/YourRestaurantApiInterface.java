@@ -23,6 +23,13 @@ public interface YourRestaurantApiInterface {
     @POST("user")
     Call<User> addUser(@Body User user);
 
+    @POST("comment")
+    Call<Comment> addComment(@Body Comment comment);
+
     @DELETE("comment/{commentId}")
     Call<Void> deleteComment(@Path("commentId") String commentId);
+
+    @GET("login")
+    Call<List<User>> getEmailAndPassword(@Path("email") String email, @Path("password") String password);
+
 }

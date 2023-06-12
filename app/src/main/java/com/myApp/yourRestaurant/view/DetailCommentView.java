@@ -37,8 +37,13 @@ public class DetailCommentView extends AppCompatActivity {
 
         etTitle.setText(comment.getTitle());
         etComment.setText(comment.getText());
-        etDateComment.setText(comment.getDateComment());
+        etDateComment.setText(comment.getDate());
 //      checkFavourite.setChecked(comment.isFavourite());
-        etImageComment.setImageBitmap(ImageUtils.getBitmap(comment.getCommentPhoto()));
+        if (comment.getCommentPhoto() == null){
+//            etImageComment.setImageBitmap(ImageUtils.getBitmap(comment.getCommentPhoto()));
+            comment.setCommentPhoto(null) ;
+        }else{
+            etImageComment.setImageBitmap(ImageUtils.getBitmap(comment.getCommentPhoto()));
+        }
     }
 }

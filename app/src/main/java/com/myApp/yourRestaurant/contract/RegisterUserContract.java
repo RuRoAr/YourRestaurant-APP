@@ -16,7 +16,7 @@ public interface RegisterUserContract {
             void OnModifyUserSuccess(User user);
             void OnModifyUserError(String message);
         }
-        void modifyVisit(OnModifyUserListener listener, String visitId, User user);
+        void modifyUser(OnModifyUserListener listener, String visitId, User user);
 
         void addRegisterUser(OnAddUserListener listener, User user);
     }

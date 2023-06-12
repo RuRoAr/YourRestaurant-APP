@@ -21,15 +21,22 @@ public class Comment implements Parcelable {
     @ColumnInfo
     private String text;
     @ColumnInfo
-    private String dateComment;
+    private String date;
+    @ColumnInfo
+//            (typeAffinity = ColumnInfo.BLOB)
+    private byte[] commentPhoto;
 
 
     protected Comment(Parcel in) {
         id = in.readLong();
         title = in.readString();
         text = in.readString();
-        dateComment = in.readString();
+        date = in.readString();
         commentPhoto = in.readBlob();
+    }
+
+    public Comment() {
+
     }
 
     public static final Creator<Comment> CREATOR = new Creator<Comment>() {
@@ -46,21 +53,20 @@ public class Comment implements Parcelable {
 
     @Override
     public String toString() {
-        return  "- " + title  + '\n' + '\n'  + '\n' +
+        return  '\n' +"- " + title  + '\n' +
                 "- "+ text + '\n' +
-                "- " + dateComment ;
+                "- " + date + '\n'  ;
     }
 
-    public Comment(long id, String title, String text, String dateComment, byte[] commentPhoto) {
+    public Comment(long id, String title, String text, String date, byte[] commentPhoto) {
         this.id = id;
         this.title = title;
         this.text = text;
-        this.dateComment = dateComment;
+        this.date = date;
         this.commentPhoto = commentPhoto;
     }
 
-    @ColumnInfo
-    private byte[] commentPhoto;
+
 
     public long getId() {
         return id;
@@ -86,12 +92,12 @@ public class Comment implements Parcelable {
         this.text = text;
     }
 
-    public String getDateComment() {
-        return dateComment;
+    public String getDate() {
+        return date;
     }
 
-    public void setDateComment(String dateComment) {
-        this.dateComment = dateComment;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public byte[] getCommentPhoto() {
@@ -113,7 +119,7 @@ public class Comment implements Parcelable {
         parcel.writeLong(id);
         parcel.writeString(title);
         parcel.writeString(text);
-        parcel.writeString(dateComment);
+        parcel.writeString(date);
         parcel.writeBlob(commentPhoto);
     }
 }

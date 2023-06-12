@@ -16,19 +16,25 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".view.AddCommentView"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
             android:name=".view.RestaurantListView"
+            android:exported="false"
+            android:theme="@style/Theme.Design" />
+        <activity
+            android:name=".view.DetailCommentView"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
-            android:name=".view.DetailCommentView"
-            android:exported="false" />
-        <activity
             android:name=".view.CommentListView"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light" />
+            android:theme="@style/Theme.Design" />
         <activity
             android:name=".view.RegisterUserView"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
             android:name=".view.UserLoginView"
             android:exported="true"

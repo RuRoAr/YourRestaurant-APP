@@ -152,8 +152,8 @@ public class CommentListView extends AppCompatActivity implements CommentListCon
 //            startActivity(intent);
             return true;
         }else if (item.getItemId() == R.id.add_comment) {
-//            Intent intent = new Intent(this, MapsActivity.class);
-//            startActivity(intent);
+            Intent intent = new Intent(this, AddCommentView.class);
+            startActivity(intent);
         }else if (item.getItemId() == R.id.more_users) {
 //            Intent intent = new Intent(this, OrderListView.class);
 //            startActivity(intent);

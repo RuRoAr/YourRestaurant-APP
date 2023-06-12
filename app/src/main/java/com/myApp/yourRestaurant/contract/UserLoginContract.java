@@ -2,22 +2,35 @@ package com.myApp.yourRestaurant.contract;
 
 import com.myApp.yourRestaurant.domain.User;
 
+import java.util.List;
+
 public interface UserLoginContract {
-interface Model{
-    interface ValidateUserListener {
-        void ValidateUserSuccess(User user);
-        void ValidateUserError(String message);
+    interface Model {
+        interface ValidateUserListener {
+
+        }
+
+        interface OnLoginValidateListener {
+
+            void loginValidateSuccess(List<User> users);
+
+            void loginValidateError(String message);
+
+        }
+
+
+        void ValidateEmailAndPassword(OnLoginValidateListener listener, String email, String password);
     }
-    void ValidateUser(ValidateUserListener listener, User user);
 
 
-}
     interface View {
-
         void showErrorMessage(String message);
     }
 
     interface Presenter {
-        void validateUser(User user);
+        void ValidateEmailAndPassword( String email, String password);
     }
+
+
 }
+

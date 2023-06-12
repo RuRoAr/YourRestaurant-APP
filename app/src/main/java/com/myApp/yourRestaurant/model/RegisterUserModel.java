@@ -11,7 +11,7 @@ import retrofit2.Response;
 
 public class RegisterUserModel implements RegisterUserContract.Model {
     @Override
-    public void modifyVisit(OnModifyUserListener listener, String visitId, User user) {
+    public void modifyUser(OnModifyUserListener listener, String visitId, User user) {
 
     }
 

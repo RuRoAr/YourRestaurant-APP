@@ -91,6 +91,7 @@ public class RegisterUserView extends AppCompatActivity implements RegisterUserC
         }
         else {
             presenter.addUser(user);
+            Toast.makeText(this, "usuario añadido", Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -23,13 +23,11 @@ public class Restaurant implements Parcelable {
 
     @Override
     public String toString() {
-        return "Restaurant{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", qualification=" + qualification +
-                ", typeFood='" + typeFood + '\'' +
-                '}';
+        return
+                "Name='" + name + '\n' +
+                "Address='" + address + '\n' +
+                "Qualification=" + qualification + '\n' +
+                "Type of Food='" + typeFood ;
     }
 
     public Restaurant(long id, String name, String address, float qualification, String typeFood) {

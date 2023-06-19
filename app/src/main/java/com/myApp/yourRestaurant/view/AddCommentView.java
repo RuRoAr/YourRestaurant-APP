@@ -87,6 +87,7 @@ public class AddCommentView extends AppCompatActivity {
         }
         else {
             presenter.addComment(comment);
+            Toast.makeText(this, "Comentario Añadido", Toast.LENGTH_SHORT).show();
         }
     }
 

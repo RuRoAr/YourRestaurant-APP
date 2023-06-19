@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/bb">
+
+    <item
+        android:id="@+id/add_comment"
+        android:icon="@drawable/btn_bg"
+        android:title= "New Comment" />
+    <item
+        android:id="@+id/add_restaurant"
+        android:icon="@drawable/btn_bg"
+        android:title="New restaurants" />
+    <item
+        android:id="@+id/more_restaurants"
+        android:icon="@drawable/btn_bg"
+        android:title="More restaurants" />
+
+    <item
+        android:id="@+id/more_users"
+        android:icon="@drawable/btn_bg"
+        android:title="More Users" />
+    />
+
+</menu>

@@ -10,16 +10,24 @@ public interface CommentListContract  {
             void onLoadCommentsSuccess(List<Comment> comments);
             void onLoadCommentsError(String error);
 
+        }interface OnDeleteCommentListener {
+            ;
+            void onDeleteCommentSuccess();
+            void onDeleteCommentError(String message);
         }
         void loadAllComments(OnLoadCommentsListener listener);
+        void deleteComment(OnDeleteCommentListener listener, String commentId);
     }
 
     interface view{
         void listAllComments(List<Comment> comments);
-        void showErrorComments(String error);
+        void showErrorComments(String message);
+
+        void showErrorMessage(String message);
     }
 
     interface presenter{
         void loadAllComments();
+        void deleteComment(String commentId);
     }
 }

@@ -37,4 +37,21 @@ public class CommentListModel implements CommentListContract.Model {
         });
 
     }
+    @Override
+    public void deleteComment(OnDeleteCommentListener listener, String commentId) {
+        YourRestaurantApiInterface api = YourRestaurantApi.buildInstance();
+        Call<Void> callComments = api.deleteComment(commentId);
+        callComments.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                listener.onDeleteCommentSuccess();
+            }
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                listener.onDeleteCommentError("Se ha producido un error");
+                t.printStackTrace();
+            }
+        });
+    }
+
 }
